@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Header from './Header';
 import './App.css';
 
 class App extends Component {
@@ -47,10 +47,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to Home Assistant</h1>
-        </header>
+        <Header />
         <p className="App-intro">
           <a href='/on' className='button turn-on' onClick={this.handleClick}>Turn On</a>
           <a href='/off' className='button turn-off' onClick={this.handleClick}>Turn Off</a>

@@ -38,35 +38,41 @@ class App extends Component {
       })
   }
 
-  buildRequestUrl() {
-    const endpoint = this.state.isOff ? 'on' : 'set'; 
-    const query = `mode=${this.state.mode}&speed=${this.state.speed}&temp=${this.state.temp}`
+  buildRequestUrl(turnOn, mode, speed, temp) {
+    if (turnOn) {
+      const endpoint = this.state.isOn ? 'set' : 'on'; 
+      const query = `mode=${mode}&speed=${speed}&temp=${temp}`
 
-    return `${this.props.url}/${endpoint}?${query}`
+      return `${this.props.url}/${endpoint}?${query}`
+    }
+
+    return `${this.props.url}/off`;
   }
 
-  handleClick(turnOn, mode, e) {
+  handleClick(turnOn, mode, speed, temp, e) {
     e.preventDefault();
 
-    const requestUrl = this.buildRequestUrl();
-
-    this.setState(prevState => ({
-      isOn: turnOn,
-      isOff: !turnOn,
-      mode: mode
-    }));
+    const requestUrl = this.buildRequestUrl(turnOn, mode, speed, temp);
 
     console.log(requestUrl);
 
-    //fetch(this.props.url)
-      //.then(response => {
-        //response.json().then(data => {
-          //console.log('Data', data);
-        //});
-      //})
-      //.catch(err => {
-        //console.log('Error: ', err.message);
-      //})
+    fetch(requestUrl)
+      .then(response => {
+        response.json().then(data => {
+          console.log('Response: ', data);
+
+          this.setState(prevState => ({
+            isOn: turnOn,
+            isOff: !turnOn,
+            mode: mode,
+            speed: speed,
+            temp: temp
+          }));
+        });
+      })
+      .catch(err => {
+        console.log('Error: ', err.message);
+      })
   }
 
   render() {
@@ -74,16 +80,22 @@ class App extends Component {
       <div className="App">
           <Header />
           <main className="main">
-              <div className="card air-conditioner">
-                  <div className='temperature'>
-                    {this.state.isOn ? 'On ' + this.state.mode + this.state.speed + this.state.temp : 'Off'}
+              <div className="card ac">
+                  <div className='current-status'>
+                    {this.state.isOn ? 'The AC is On' : 'The AC is Off'}
                   </div>
 
-                  <button className='button' onClick={this.handleClick.bind(this, true, 'cool')}>Turn On COOL</button>
-                  <button className='button' onClick={this.handleClick.bind(this, true, 'heat')}>Turn On HEAT</button>
-                  <button className='button' onClick={this.handleClick.bind(this, true, 'dry')}>Turn On DRY</button>
-                  <button className='button' onClick={this.handleClick.bind(this, true, 'fan')}>Turn On FAN</button>
-                  <button className='button' onClick={this.handleClick.bind(this, false, '')}>Turn Off</button>
+                  {this.state.isOn && 
+                    <div className='settings'>
+                      {this.state.mode}, {this.state.speed}, {this.state.temp} Degrees Fahrenheit
+                    </div>} 
+
+                  <div className='submit'>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'cool', 'auto', '70')}>Turn On COOL</button>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'heat', 'auto', '76')}>Turn On HEAT</button>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'dry', 'auto', '70')}>Turn On DRY</button>
+                    <button className='button' onClick={this.handleClick.bind(this, false, '', '', '')}>Turn Off</button>
+                  </div>
               </div>
           </main>
       </div>

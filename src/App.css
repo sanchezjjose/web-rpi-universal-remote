@@ -55,3 +55,17 @@ body {
   background: #fff;
   padding: 16px;
 }
+
+.App .current-status {
+  padding: 16px;
+  font-size: 1.75em;
+}
+
+.App .settings {
+  padding: 16px;
+  font-size: 1.25em;
+}
+
+.App .submit {
+  padding: 16px;
+}

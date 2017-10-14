@@ -27,9 +27,9 @@ class App extends Component {
           this.setState({
             isOn: data.isOn,
             isOff: data.isOff,
-            mode: data.settings.mode || this.state.mode,
-            speed: data.settings.speed || this.state.speed,
-            temp: data.settings.temp ||  this.state.temp
+            mode: data.settings && data.settings.mode,
+            speed: data.settings && data.settings.speed,
+            temp: data.settings && data.settings.temp
           });
         });
       })
@@ -54,7 +54,7 @@ class App extends Component {
 
     const requestUrl = this.buildRequestUrl(turnOn, mode, speed, temp);
 
-    console.log(requestUrl);
+    console.log('Request: ', requestUrl);
 
     fetch(requestUrl)
       .then(response => {

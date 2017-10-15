@@ -54,18 +54,33 @@ body {
   margin: 10px;
   background: #fff;
   padding: 16px;
+  display: flex;
+  flex-direction: column;
 }
 
-.App .current-status {
-  padding: 16px;
+.App .ac-status {
   font-size: 1.75em;
+  display: flex;
+  flex-direction: row;
+  padding: 16px 0;
+}
+
+.App .ac-status-on, .App .ac-status-off {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .App .settings {
-  padding: 16px;
   font-size: 1.25em;
+  padding: 16px 0;
 }
 
 .App .submit {
   padding: 16px;
+}
+
+.App .material-icons {
+  font-size: 70px;
+  padding-left: 20px;
 }

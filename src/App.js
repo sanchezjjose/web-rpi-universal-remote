@@ -81,8 +81,19 @@ class App extends Component {
           <Header />
           <main className="main">
               <div className="card ac">
-                  <div className='current-status'>
-                    {this.state.isOn ? 'The AC is On' : 'The AC is Off'}
+
+                  <div className='ac-status'>
+                    {this.state.isOn ? (
+                        <div className='ac-status-on'>
+                          The Unit is On
+                          <i className="material-icons">ac_unit</i>
+                        </div>
+                      ) : (
+                        <div className='ac-status-off'>
+                          The Unit is Off
+                          <i className="material-icons">block</i>
+                        </div>
+                      )}
                   </div>
 
                   {this.state.isOn && 
@@ -90,11 +101,36 @@ class App extends Component {
                       {this.state.mode}, {this.state.speed}, {this.state.temp} Degrees Fahrenheit
                     </div>} 
 
+                  <div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
+                       aria-valuemin="60" aria-valuemax="88" aria-valuenow="68" data-step="2"
+                       aria-label="Select Value">
+                    <div class="mdc-slider__track-container">
+                      <div class="mdc-slider__track"></div>
+                    </div>
+                    <div class="mdc-slider__thumb-container">
+                      <div class="mdc-slider__pin">
+                        <span class="mdc-slider__pin-value-marker"></span>
+                      </div>
+                      <svg class="mdc-slider__thumb" width="21" height="21">
+                        <circle cx="10.5" cy="10.5" r="7.875"></circle>
+                      </svg>
+                      <div class="mdc-slider__focus-ring"></div>
+                    </div>
+                  </div>
+
                   <div className='submit'>
-                    <button className='button' onClick={this.handleClick.bind(this, true, 'cool', 'auto', '70')}>Turn On COOL</button>
-                    <button className='button' onClick={this.handleClick.bind(this, true, 'heat', 'auto', '76')}>Turn On HEAT</button>
-                    <button className='button' onClick={this.handleClick.bind(this, true, 'dry', 'auto', '70')}>Turn On DRY</button>
-                    <button className='button' onClick={this.handleClick.bind(this, false, '', '', '')}>Turn Off</button>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'cool', 'auto', '70')}>
+                      Turn On COOL
+                    </button>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'heat', 'auto', '76')}>
+                      Turn On HEAT
+                    </button>
+                    <button className='button' onClick={this.handleClick.bind(this, true, 'dry', 'auto', '70')}>
+                      Turn On DRY
+                    </button>
+                    <button className='button' onClick={this.handleClick.bind(this, false, '', '', '')}>
+                      Turn Off
+                    </button>
                   </div>
               </div>
           </main>

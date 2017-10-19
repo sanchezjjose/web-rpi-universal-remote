@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import {MDCSlider} from '@material/slider';
+import { MDCSlider } from '@material/slider/dist/mdc.slider';
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 

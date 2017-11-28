@@ -10,6 +10,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "REACT_APP_SERVER_URL=http://raspberrypi.local:3001 npm run start",
     "start:prod": "forever start app.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

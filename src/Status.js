@@ -21,7 +21,7 @@ class Status extends Component {
 
         {this.props.isOn && 
           <div className='settings'>
-            {this.props.mode}, {this.props.speed}, {this.props.temp} Degrees Fahrenheit
+            {this.props.mode}, {this.props.speed}, {this.props.temp}°F
           </div>
         }
       </div>

@@ -1,8 +1,9 @@
 .App .ac-status {
-  font-size: 1.75em;
+  font-size: 2em;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 16px 0;
+  margin: 0 auto;
 }
 
 .App .ac-status-on, .App .ac-status-off {
@@ -12,11 +13,13 @@
 }
 
 .App .settings {
-  font-size: 1.25em;
-  padding: 16px 0;
+  align-items: center;
+  display: flex;
+  font-size: 0.75em;
+  font-weight: 300;
 }
 
 .App .material-icons {
-  font-size: 70px;
-  padding-left: 20px;
+  font-size: 100px;
+  padding: 0 16px;
 }

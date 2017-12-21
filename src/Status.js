@@ -8,12 +8,12 @@ class Status extends Component {
       <div className='ac-status'>
         {this.props.isOn ? (
             <div className='ac-status-on'>
-              The Unit is On
+              The AC is On
               <i className="material-icons">ac_unit</i>
             </div>
           ) : (
             <div className='ac-status-off'>
-              The Unit is Off
+              The AC is Off
               <i className="material-icons">block</i>
             </div>
           )

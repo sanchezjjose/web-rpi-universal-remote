@@ -3,3 +3,20 @@
   margin: 16px;
   width: 120px;
 }
+
+.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-container {
+    background-color: #fdd835;
+    // background-color: rgba(100, 221, 23, 0.26);
+}
+
+.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track {
+    background-color: #d32f2f;
+    // background-color: #64dd17;
+}
+
+.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__thumb {
+    fill: #f57f17;
+    stroke: #f57f17;
+    // fill: #64dd17;
+    // stroke: #64dd17;
+}

@@ -3,16 +3,3 @@
   margin: 16px;
   width: 120px;
 }
-
-.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track-container {
-    background-color: #cfcfcf;
-}
-
-.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__track {
-    background-color: #9e9e9e;
-}
-
-.mdc-slider:not(.mdc-slider--disabled) .mdc-slider__thumb {
-    fill: #9e9e9e;
-    stroke: #9e9e9e;
-}

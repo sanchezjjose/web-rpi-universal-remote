@@ -9,7 +9,7 @@
     "react-scripts": "1.0.14"
   },
   "scripts": {
-    "build": "REACT_APP_SERVER_URL=http://raspberrypi.local:3001 react-scripts build",
+    "build": "REACT_APP_SERVER_URL=http://localhost:3001 react-scripts build",
     "start:dev": "REACT_APP_SERVER_URL=http://localhost:3001 react-scripts start",
     "start": "forever start app.js",
     "test": "react-scripts test --env=jsdom",

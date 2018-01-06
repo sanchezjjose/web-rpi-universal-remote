@@ -25,7 +25,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch(this.props.url + '/status')
+    fetch('/status')
       .then(response => {
         response.json().then(data => {
           this.setState(prevState => ({
@@ -48,10 +48,10 @@ class App extends Component {
       const endpoint = this.state.isOn ? 'set' : 'on'; 
       const query = `mode=${mode}&speed=${speed}&temp=${temp}`
 
-      return `${this.props.url}/${endpoint}?${query}`
+      return `/${endpoint}?${query}`
     }
 
-    return `${this.props.url}/off`;
+    return `/off`;
   }
 
   handleClick(turnOn, mode, speed = 'auto', temp = this.state.temp) {

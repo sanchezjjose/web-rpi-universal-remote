@@ -6,20 +6,32 @@ let slider = null;
 
 class Slider extends Component {
 
+  constructor (props) {
+    super(props);
+  }
+
   componentDidMount() {
     // this.sliderDiv is an alternative to document.querySelector('.mdc-slider')
     slider = new MDCSlider(this.sliderDiv);
-    slider.listen('MDCSlider:change', (e) => this.props.handleChange(slider.value, e));
+
+    slider.listen('MDCSlider:change', (e) => {
+
+      // only reset submit change when slider and current value differ
+      if (this.props.temp != slider.value) {
+        this.props.handleChange(slider.value, e);
+      }
+
+    });
   }
 
   componentDidUpdate() {
-    // ensure proper value is set, and resets in case of error
+    // forces to correct value due to case on iOS browser where slider will attempt to reset
     slider.value = this.props.temp;
   }
   
   render() {
     return (
-      <div 
+      <div
         ref={(div) => { this.sliderDiv = div }}
         className="mdc-slider mdc-slider--discrete" 
         tabIndex="0" 
@@ -45,7 +57,6 @@ class Slider extends Component {
           
           <div className="mdc-slider__focus-ring"></div>
         </div>
-
       </div>
     );
   }
